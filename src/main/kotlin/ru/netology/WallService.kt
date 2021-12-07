@@ -13,29 +13,9 @@ object WallService {
     fun update(post: Post): Boolean {
         for ((index, postIteration) in posts.withIndex()) {
             if (post.id == postIteration.id) {
-                posts[index] = postIteration.copy(
-                    id = postIteration.id,
-                    fromId = postIteration.fromId,
-                    createdBy = postIteration.createdBy,
-                    text = postIteration.text,
-                    replyOwnerIid = postIteration.replyOwnerIid,
-                    replyPostId = postIteration.replyPostId,
-                    friendsOnly = postIteration.friendsOnly,
-                    comments = postIteration.comments,
-                    copyright = postIteration.copyright,
-                    likes = postIteration.likes,
-                    reposts = postIteration.reposts,
-                    views = postIteration.views,
-                    postType = postIteration.postType,
-                    signerId = postIteration.signerId,
-                    canPin = postIteration.canPin,
-                    canDelete = postIteration.canDelete,
-                    canEdit = postIteration.canEdit,
-                    isPinned = postIteration.isPinned,
-                    markedAsAds = postIteration.markedAsAds,
-                    isFavorite = postIteration.isFavorite,
-                    donut = postIteration.donut,
-                    postponedId = postIteration.postponedId
+                posts[index] = post.copy(
+                    id = post.id,
+                    text = post.text
                 )
                 return true
             }

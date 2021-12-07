@@ -7,7 +7,7 @@ fun main() {
     val secondPost = addPost("Second post")
     printPost(secondPost)
 
-    val updatedPost = addPostNoIdUnique(1,"Updated post")
+    val updatedPost = addPostNoIdUnique(1, "Updated post")
     if (updatePost(updatedPost)) {
         println("Updated post:")
         printPost(updatedPost)
@@ -17,29 +17,13 @@ fun main() {
 fun addPost(textPost: String): Post {
     val post = Post(
         id = 0,
-        ownerId = 0,
-        fromId = 0,
-        createdBy = 0,
-        date = 0,
         text = textPost,
-        replyOwnerIid = 0,
-        replyPostId = 0,
-        friendsOnly = false,
         comments = Comments(0, canPost = false, groupsCanPost = false, canClose = false, canOpen = false),
         copyright = Copyright(0, "", "Empty", ""),
         likes = Likes(0, userLikes = false, canLike = false, canPublish = false),
         reposts = Reposts(0, false),
         views = Views(0),
-        postType = "",
-        signerId = 0,
-        canPin = false,
-        canDelete = false,
-        canEdit = false,
-        isPinned = false,
-        markedAsAds = false,
-        isFavorite = false,
-        donut = Donut(false, 0, Placeholder(), false, ""),
-        postponedId = 0
+        donut = Donut(false, 0, Placeholder(), false, "")
     )
 
     return WallService.add(post)
@@ -48,29 +32,13 @@ fun addPost(textPost: String): Post {
 fun addPostNoIdUnique(idPost: Int, textPost: String): Post {
     return Post(
         id = idPost,
-        ownerId = 0,
-        fromId = 0,
-        createdBy = 0,
-        date = 0,
         text = textPost,
-        replyOwnerIid = 0,
-        replyPostId = 0,
-        friendsOnly = false,
         comments = Comments(0, canPost = false, groupsCanPost = false, canClose = false, canOpen = false),
         copyright = Copyright(0, "", "Empty", ""),
         likes = Likes(0, userLikes = false, canLike = false, canPublish = false),
         reposts = Reposts(0, false),
         views = Views(0),
-        postType = "",
-        signerId = 0,
-        canPin = false,
-        canDelete = false,
-        canEdit = false,
-        isPinned = false,
-        markedAsAds = false,
-        isFavorite = false,
-        donut = Donut(false, 0, Placeholder(), false, ""),
-        postponedId = 0
+        donut = Donut(false, 0, Placeholder(), false, "")
     )
 }
 
