@@ -1,7 +1,5 @@
 package ru.netology
 
-import java.time.LocalDateTime
-
 data class Post(
     val id: Int = 0,
     val ownerId: Int = 0,
@@ -18,7 +16,10 @@ data class Post(
     val reposts: Reposts,
     val views: Views,
     val postType: String = "",
+    val postSource: PostSource?,
+    val geo: Geo?,
     val signerId: Int = 0,
+    //val copyHistory: Array<Post>?,
     val canPin: Boolean = false,
     val canDelete: Boolean = false,
     val canEdit: Boolean = false,
