@@ -12,6 +12,8 @@ fun main() {
         println("Updated post:")
         printPost(updatedPost)
     }
+
+    printPostSource(updatedPost)
 }
 
 fun addPost(textPost: String): Post {
@@ -51,4 +53,9 @@ fun printPost(post: Post) {
 
 fun updatePost(post: Post): Boolean {
     return WallService.update(post)
+}
+
+fun printPostSource(post: Post) {
+ val postSourceType = post.postSource?.type ?: "no PostSource"
+    println(postSourceType)
 }

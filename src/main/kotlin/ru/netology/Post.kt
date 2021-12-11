@@ -19,7 +19,7 @@ data class Post(
     val postSource: PostSource? = null,
     val geo: Geo? = null,
     val signerId: Int = 0,
-    //val copyHistory: Array<Post>?,
+    val copyHistory: Array<Post>? = emptyArray(),
     val canPin: Boolean = false,
     val canDelete: Boolean = false,
     val canEdit: Boolean = false,
@@ -28,4 +28,19 @@ data class Post(
     val isFavorite: Boolean = false,
     val donut: Donut,
     val postponedId: Int = 0
-)
+) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Post
+
+        if (id != other.id) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return id
+    }
+}
