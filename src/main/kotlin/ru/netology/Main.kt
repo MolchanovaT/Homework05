@@ -14,6 +14,8 @@ fun main() {
     }
 
     printPostSource(updatedPost)
+
+    printInfoSealedClasses()
 }
 
 fun addPost(textPost: String): Post {
@@ -58,4 +60,21 @@ fun updatePost(post: Post): Boolean {
 fun printPostSource(post: Post) {
  val postSourceType = post.postSource?.type ?: "no PostSource"
     println(postSourceType)
+}
+
+fun printInfoSealedClasses() {
+    val attachmentGraffiti: Attachment = GraffitiAttachment("stuff")
+    println("Type for GraffitiAttachment: ${attachmentGraffiti.type}")
+
+    val attachmentAudio: Attachment = AudioAttachment("stuff")
+    println("Type for AudioAttachment: ${attachmentAudio.type}")
+
+    val attachmentPhoto: Attachment = PhotoAttachment("stuff")
+    println("Type for PhotoAttachment: ${attachmentPhoto.type}")
+
+    val attachmentPostedPhoto: Attachment = PostedPhotoAttachment("stuff")
+    println("Type for PostedPhotoAttachment: ${attachmentPostedPhoto.type}")
+
+    val attachmentPage: Attachment = PageAttachment("stuff")
+    println("Type for PageAttachment: ${attachmentPage.type}")
 }
