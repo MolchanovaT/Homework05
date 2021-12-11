@@ -12,6 +12,14 @@ fun main() {
         println("Updated post:")
         printPost(updatedPost)
     }
+
+    val page = Page(11, 22, "Page for post")
+    val attachmentPage = AttachmentPage("page", page)
+    var attachments = emptyArray<Attachment>()
+    attachments += attachmentPage
+
+    val postWithAttachments = addPostWithAttachments(111, "Post with attachments", attachments)
+    printAttachmentInfo(postWithAttachments)
 }
 
 fun addPost(textPost: String): Post {
@@ -51,4 +59,34 @@ fun printPost(post: Post) {
 
 fun updatePost(post: Post): Boolean {
     return WallService.update(post)
+}
+
+fun addPostWithAttachments(idPost: Int, textPost: String, attachmentsPost: Array<Attachment>): Post {
+    return Post(
+        id = idPost,
+        text = textPost,
+        attachments = attachmentsPost
+    )
+}
+
+fun printAttachmentInfo(post: Post) {
+    for (attachment in post.attachments!!) {
+        when (attachment) {
+            is AttachmentAudio -> {
+                println("audio_id = $attachment.audio.id")
+            }
+            is AttachmentPhoto -> {
+                println("photo_id = $attachment.photo.id")
+            }
+            is AttachmentPage -> {
+                println("page_id = ${attachment.page.id}")
+            }
+            is AttachmentPostedPhoto -> {
+                println("posted photo_id = $attachment.postedPhoto.id")
+            }
+            is AttachmentGraffiti -> {
+                println("Graffiti_id = $attachment.graffiti.id")
+            }
+        }
+    }
 }
