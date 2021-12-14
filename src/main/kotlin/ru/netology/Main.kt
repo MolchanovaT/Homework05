@@ -13,9 +13,23 @@ fun main() {
         printPost(updatedPost)
     }
 
-    printPostSource(updatedPost)
+//    printPostSource(updatedPost)
+//
+//    printInfoSealedClasses()
 
-    printInfoSealedClasses()
+    val comment = newComment(1, 6, "test post", 1)
+    if (WallService.createComment(comment)) {
+        println("Comment successfully created")
+    }
+}
+
+fun newComment(idComment: Int, postIdComment: Int, textComment: String, fromIdComment: Int): Comment {
+    return Comment(
+        id = idComment,
+        postId = postIdComment,
+        text = textComment,
+        fromId = fromIdComment
+    )
 }
 
 fun addPost(textPost: String): Post {
@@ -58,7 +72,7 @@ fun updatePost(post: Post): Boolean {
 }
 
 fun printPostSource(post: Post) {
- val postSourceType = post.postSource?.type ?: "no PostSource"
+    val postSourceType = post.postSource?.type ?: "no PostSource"
     println(postSourceType)
 }
 
